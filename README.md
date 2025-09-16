@@ -32,8 +32,8 @@ Este documento resume cómo se abordó el mismo caso de negocio en **Tableau** y
 
 ### Diferencias observadas
 
-- **Power BI**: agregué KPI adicional de Clientes Activos y un gráfico dual “Ventas Netas vs Meta Ventas Mes” con tema JSON de Manuelita.  
-- **Tableau**: se empleó **Measure Names/Values** para la tabla de vendedores y parámetros/filtros para seleccionar el año o mes.  
+- **Power BI**: KPI adicional de Clientes Activos y gráfico dual “Ventas Netas vs Meta Ventas Mes” con tema JSON de Manuelita.  
+- **Tableau**: Measure Names/Values para tabla de Vendedores; parámetros/filtros para seleccionar año/mes.  
 
 ---
 
@@ -41,7 +41,7 @@ Este documento resume cómo se abordó el mismo caso de negocio en **Tableau** y
 
 - **Tableau (KPI Ventas)**: ~$46.467.000  
 - **Power BI (KPI Ventas)**: ~$43,34 M  
-- Diferencia explicada por filtros de fecha: Power BI usaba rango 15/01/2024–18/02/2024; Tableau mostraba todo el año 2024.  
+- Diferencia explicada por filtros de fecha.  
 - Alineando el período, los valores coinciden dentro de redondeo.
 
 ---
@@ -51,16 +51,16 @@ Este documento resume cómo se abordó el mismo caso de negocio en **Tableau** y
 | Aspecto | Tableau | Power BI |
 |---------|--------|----------|
 | Modelo | Relación entre ventas_techstore, productos, clientes, metas | Modelo estrella: ventas_techstore (hechos), productos, clientes, metas, calendario |
-| Cálculos | Calculated Fields (Ventas Netas, Margen %, Cumplimiento %) | DAX Measures (Ventas, Margen, Cumplimiento, Estado, Color) |
-| Fechas | Parámetro de año/mes y filtros | Tabla Calendario + slicers de fechas; join de metas por InicioMes |
+| Cálculos | Calculated Fields | DAX Measures |
+| Fechas | Parámetro año/mes y filtros | Tabla Calendario + slicers de fechas |
 | Tabla de Vendedores | Measure Names/Values | Matriz DAX con subtotales automáticos |
 
 ---
 
 ## 6) Experiencia de desarrollo
 
-**Tableau:** rápido para prototipos, arrastrar y soltar campos, acciones y tooltips fáciles de personalizar.  
-**Power BI:** modelado robusto, DAX potente, slicers integrados y temas JSON para estandarizar marca.
+- **Tableau:** rápido para prototipos, acciones y tooltips fáciles.  
+- **Power BI:** modelado robusto, DAX potente, slicers integrados, temas JSON.  
 
 ---
 
@@ -68,10 +68,10 @@ Este documento resume cómo se abordó el mismo caso de negocio en **Tableau** y
 
 | Tema | Tableau | Power BI |
 |------|--------|----------|
-| Rendimiento | Extracts Hyper y caché | Import/DirectQuery, Composite |
-| Publicación | Tableau Server/Cloud | Power BI Service (Pro/PPU/Fabric) |
+| Rendimiento | Extracts Hyper | Import/DirectQuery |
+| Publicación | Tableau Server/Cloud | Power BI Service |
 | Gobernanza | Permisos por proyecto/vista | Roles RLS, datasets reutilizables |
-| Licenciamiento | Por rol (Creator/Explorer/Viewer) | Pro/PPU; escalamiento con Fabric |
+| Licenciamiento | Por rol | Pro/PPU |
 
 ---
 
@@ -80,14 +80,29 @@ Este documento resume cómo se abordó el mismo caso de negocio en **Tableau** y
 | Elemento | Tableau | Power BI |
 |----------|--------|----------|
 | Formato | `.twbx` / `.twb` | `.pbix` |
-| Git | `.twb` XML fácil de diff; `.twbx` binario | `.pbix` binario; se recomienda README y capturas para versionar |
+| Git | XML fácil diff; .twbx binario | .pbix binario; README/capturas recomendadas |
 | Evidencia | Captura `Dashboard_tableau.png` | Captura `Dashboard_power.png` |
 
 ---
 
 ## 9) Principales aprendizajes
 
-- Alinear ventanas de tiempo es clave para consistencia de cifras.  
-- DAX exige atención a contexto de filtro y agregaciones (SUMX, DIVIDE, SWITCH).  
-- Temas JSON en Power BI facilitan estandarizar marca.  
-- Ambos motores cumplen el objetivo del lab; la elección depende de stack, gobierno y complejidad del modelo.
+- Alinear ventanas de tiempo es clave.  
+- DAX exige atención a contexto de filtro y agregaciones.  
+- Temas JSON facilitan consistencia de marca.  
+- Ambos cumplen el objetivo; elección depende del stack y complejidad.
+
+---
+
+## 10) Secciones para imágenes
+
+### Tableau – Dashboard general
+![Captura Tableau](tableau/Dashboard_tableau.png)
+
+### Power BI – Dashboard general
+![Captura Power BI](powerbi/Dashboard_power.png)
+
+### Ejemplos de KPI, Top 10 productos y tabla de vendedores
+![Ejemplo Tableau](tableau/Top10_Tableau.png)
+![Ejemplo Power BI](powerbi/Top10_PowerBI.png)
+
