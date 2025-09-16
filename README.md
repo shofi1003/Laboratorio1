@@ -97,12 +97,9 @@ Este documento resume cómo se abordó el mismo caso de negocio en **Tableau** y
 ## 10) Secciones para imágenes
 
 ### Tableau – Dashboard general
-![Captura Tableau](tableau/Dashboard_tableau.png)
+![Captura Tableau](image.png)
 
 ### Power BI – Dashboard general
-![Captura Power BI](powerbi/Dashboard_power.png)
+![Captura Power BI](image2.png)
 
-### Ejemplos de KPI, Top 10 productos y tabla de vendedores
-![Ejemplo Tableau](tableau/Top10_Tableau.png)
-![Ejemplo Power BI](powerbi/Top10_PowerBI.png)
 
